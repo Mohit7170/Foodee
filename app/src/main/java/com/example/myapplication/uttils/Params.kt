@@ -19,11 +19,7 @@ interface Params {
     enum class Languages(val key: String, val language: String) {
         ENGLISH("en", "English"),
         GERMAN("de", "German"),
-        FRENCH("fr", "French"),
-
-        //        ARABIC("ar", "Arabic"),
         HINDI("hi", "Hindi"),
-        CZECH("cs", "Czech"),
         SPANISH("es", "Spanish"),
         PUNJABI("pa", "Punjabi")
     }

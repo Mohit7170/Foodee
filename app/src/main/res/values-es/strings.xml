@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Foodee</string>
+    <string name="title_home">Domů</string>
+    <string name="tittle_cart">Košík</string>
+    <string name="title_settings">Nastavení</string>
+    <string name="view_cart_text">Zobrazit košík</string>
+    <string name="what_s_new_text">Co je nového</string>
+    <string name="my_cart_text">Můj košík</string>
+    <string name="add_text">Přidat</string>
+    <string name="in_cart_text">V košíku</string>
+</resources>

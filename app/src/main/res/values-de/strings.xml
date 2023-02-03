@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Feinschmecker</string>
+    <string name="title_home">Startseite</string>
+    <string name="tittle_cart">Warenkorb</string>
+    <string name="title_settings">Einstellungen</string>
+    <string name="view_cart_text">Warenkorb anzeigen</string>
+    <string name="what_s_new_text">Was ist neu</string>
+    <string name="my_cart_text">Mein Warenkorb</string>
+    <string name="add_text">Hinzufügen</string>
+    <string name="in_cart_text">Im Warenkorb</string>
+</resources>

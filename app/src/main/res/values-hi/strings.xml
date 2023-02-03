@@ -6,6 +6,6 @@
     <string name="view_cart_text">कार्ट देखें</string>
     <string name="what_s_new_text">नया क्या है</string>
     <string name="my_cart_text">मेरी कार्ट</string>
-    <string name="add_text">Add</string>
-    <string name="in_cart_text">In Cart</string>
+    <string name="add_text">जोड़ें</string>
+    <string name="in_cart_text">कार्ट में</string>
 </resources>

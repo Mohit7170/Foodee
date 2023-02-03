@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ਭੋਜਨ</string>
+    <string name = "title_home">ਘਰ</string>
+    <string name = "tittle_cart">ਕਾਰਟ</string>
+    <string name="title_settings">ਸੈਟਿੰਗਾਂ</string>
+    <string name="view_cart_text">ਕਾਰਟ ਦੇਖੋ</string>
+    <string name="what_s_new_text">ਨਵਾਂ ਕੀ ਹੈ</string>
+    <string name="my_cart_text">ਮੇਰਾ ਕਾਰਟ</string>
+    <string name = "add_text">ਸ਼ਾਮਲ ਕਰੋ</string>
+    <string name="in_cart_text">ਕਾਰਟ ਵਿੱਚ</string>
+</resources>
