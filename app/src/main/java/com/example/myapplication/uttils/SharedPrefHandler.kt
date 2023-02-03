@@ -29,4 +29,15 @@ class SharedPrefHandler(context: Context) {
         return sharedPreferences.getString(key, "-") ?: "-"
     }
 
+    fun setAppLanguage(key: Params.Languages) {
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.putString(SP_KEY_USER_LANGUAGE, key.key)
+        editor.apply()
+    }
+
+    fun getAppLanguageKey(): String {
+        return sharedPreferences.getString(SP_KEY_USER_LANGUAGE, Params.Languages.ENGLISH.key)!!
+    }
+
+
 }
