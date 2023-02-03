@@ -8,7 +8,7 @@ import com.example.myapplication.interfaces.db.MenuItemDAO
 import com.example.myapplication.modals.db.MenuItem
 
 
-@Database(entities = [MenuItem::class], version = 1)
+@Database(entities = [MenuItem::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
 //    abstract fun cartDao(): CartItemsDAO
     abstract fun menuDao(): MenuItemDAO
@@ -28,6 +28,7 @@ abstract class AppDatabase : RoomDatabase() {
     companion object : SingletonHolder<AppDatabase, Context>({
         Room.databaseBuilder(it.applicationContext, AppDatabase::class.java, "MyAppDB")
             .allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
             .build()
     })
 

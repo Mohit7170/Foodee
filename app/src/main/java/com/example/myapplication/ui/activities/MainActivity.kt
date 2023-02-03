@@ -47,11 +47,11 @@ class MainActivity : AppCompatActivity(), Clicked {
 
 
         binding.toolbar.setTitle(R.string.app_name)
-//            binding.toolbar.setTitleTextColor(R.color.white)
         binding.toolbar.inflateMenu(R.menu.bottom_nav_menu)
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.select_lang -> selectLang()
+                R.id.add_new_item -> addItemToDB()
             }
             true
         }
@@ -59,8 +59,15 @@ class MainActivity : AppCompatActivity(), Clicked {
         binding.backIv.setOnClickListener { onBackPressed() }
     }
 
+    private fun addItemToDB() {
+        val item = DemoMenuItems.addRandItemToDb(context = activity)
+        val adapter = (binding.bookingsRv.adapter as MenuAdapter)
+        adapter.addItem(item)
+        binding.bookingsRv.scrollToPosition(adapter.itemCount-1)
+    }
+
     private fun makeCartLyt() {
-        HelperClass.changeStatusBarColor(activity,R.color.white,true)
+        HelperClass.changeStatusBarColor(activity, R.color.white, true)
 
         with(binding) {
 
@@ -108,7 +115,7 @@ class MainActivity : AppCompatActivity(), Clicked {
 
             // now also update the TextView which previews the selected item
             // when selected an item the dialog should be closed with the dismiss method
-            val selectedLanguage= listItem[which]
+            val selectedLanguage = listItem[which]
 
             Log.d(TAG, "selectLang: lang -- $selectedLanguage")
 
@@ -126,7 +133,7 @@ class MainActivity : AppCompatActivity(), Clicked {
     }
 
     private fun makeMenuLyt() {
-        HelperClass.changeStatusBarColor(activity,R.color.black,false)
+        HelperClass.changeStatusBarColor(activity, R.color.black, false)
 
         with(binding) {
 
@@ -140,7 +147,7 @@ class MainActivity : AppCompatActivity(), Clicked {
             if (menuItems.isNotEmpty()) {
                 noDataTv.visibility = View.GONE
                 bookingsRv.visibility = View.VISIBLE
-                bookingsRv.adapter = MenuAdapter(activity, menuItems, this@MainActivity)
+                bookingsRv.adapter = MenuAdapter(activity, menuItems.toMutableList(), this@MainActivity)
             } else {
                 noDataTv.visibility = View.VISIBLE
                 bookingsRv.visibility = View.GONE
@@ -188,7 +195,7 @@ class MainActivity : AppCompatActivity(), Clicked {
         }
     }
 
-    override fun performAction(itemId: Int) {
+    override fun performAction() {
         if (!isFromCart) {
             checkCart()
 //            with(binding) {

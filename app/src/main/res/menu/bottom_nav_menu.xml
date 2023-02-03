@@ -6,4 +6,9 @@
         android:icon="@drawable/baseline_language_24"
         android:title="Language"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/add_new_item"
+        android:icon="@drawable/baseline_add_24"
+        android:title="Add Item"
+        app:showAsAction="ifRoom" />
 </menu>

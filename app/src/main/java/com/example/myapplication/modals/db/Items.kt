@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class MenuItem(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    @ColumnInfo(name = "itemId") val itemId: Int,
+//    @ColumnInfo(name = "itemId") val itemId: Int,
     @ColumnInfo(name = "name") val itemName: String,
     @ColumnInfo(name = "price") val itemPrice: Double,
     @ColumnInfo(name = "image") val itemImage: Int,

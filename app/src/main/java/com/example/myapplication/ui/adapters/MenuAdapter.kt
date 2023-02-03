@@ -14,7 +14,7 @@ import com.example.myapplication.uttils.SharedPrefHandler
 
 class MenuAdapter(
     private val activity: Activity,
-    private val items: List<MenuItem>,
+    private val items: MutableList<MenuItem>,
     private val clicked: Clicked
 ) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
 
@@ -39,6 +39,7 @@ class MenuAdapter(
             if (!item.isInCart) {
                 addBtn.text = activity.getString(R.string.add_text)
                 addBtn.setOnClickListener {
+                    it.isClickable = false
                     val pos = holder.adapterPosition
                     val addItem = items[pos]
 
@@ -51,9 +52,12 @@ class MenuAdapter(
                         SharedPrefHandler(activity).getIntFromSharedPref(Params.SP_CART_VALUE) + item.itemPrice
 
                     SharedPrefHandler(activity).setIntValue(Params.SP_CART_ITEMS, items)
-                    SharedPrefHandler(activity).setIntValue(Params.SP_CART_VALUE, oldCartVal.toInt())
+                    SharedPrefHandler(activity).setIntValue(
+                        Params.SP_CART_VALUE,
+                        oldCartVal.toInt()
+                    )
 
-                    clicked.performAction(addItem.itemId)
+                    clicked.performAction()
 
                     notifyItemChanged(pos)
 
@@ -66,6 +70,11 @@ class MenuAdapter(
 
     override fun getItemCount(): Int {
         return items.size
+    }
+
+    fun addItem(item: MenuItem) {
+        items.add(item)
+        notifyItemInserted(items.size)
     }
 
     inner class ViewHolder(val binding: ItemContainerMenuBinding) :
