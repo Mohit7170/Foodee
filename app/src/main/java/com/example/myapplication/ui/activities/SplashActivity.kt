@@ -1,18 +1,32 @@
 package com.example.myapplication.ui.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.postDelayed
 import com.example.myapplication.R
 import com.example.myapplication.modals.DemoMenuItems
+import com.example.myapplication.uttils.Params
+import com.example.myapplication.uttils.SharedPrefHandler
+import java.util.Locale
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        val appLan = SharedPrefHandler(this).getStringFromSharedPref(Params.APP_LANG)
+        val langCode = if (appLan == "-") "en" else appLan
+
+        val locale = Locale("hi")
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        resources.updateConfiguration(config, resources.displayMetrics)
 
         DemoMenuItems.initData(this)
 

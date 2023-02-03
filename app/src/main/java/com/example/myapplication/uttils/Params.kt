@@ -13,6 +13,7 @@ interface Params {
         val HAS_ITEM_IN_CART = "hasItemInCart"
         val CART_ITEMS = "cartItens"
         val CART_VALUE = "cartValue"
+        val APP_LANG = "appLand"
     }
 
 
