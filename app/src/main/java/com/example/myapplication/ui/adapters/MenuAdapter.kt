@@ -40,7 +40,7 @@ class MenuAdapter(
                 addBtn.text = activity.getString(R.string.add_text)
                 addBtn.setOnClickListener {
                     it.isClickable = false
-                    val pos = holder.adapterPosition
+                    val pos = holder.layoutPosition
                     val addItem = items[pos]
 
                     addItem.isInCart = true
@@ -48,20 +48,22 @@ class MenuAdapter(
 
                     val items =
                         SharedPrefHandler(activity).getIntFromSharedPref(Params.SP_CART_ITEMS) + 1
+
                     val oldCartVal =
-                        SharedPrefHandler(activity).getIntFromSharedPref(Params.SP_CART_VALUE) + item.itemPrice
+                        if (SharedPrefHandler(activity).getIntFromSharedPref(Params.SP_CART_VALUE) <= 0) 0 else SharedPrefHandler(
+                            activity
+                        ).getIntFromSharedPref(Params.SP_CART_VALUE)
 
                     SharedPrefHandler(activity).setIntValue(Params.SP_CART_ITEMS, items)
                     SharedPrefHandler(activity).setIntValue(
                         Params.SP_CART_VALUE,
-                        oldCartVal.toInt()
+                        (oldCartVal + item.itemPrice).toInt()
                     )
 
                     clicked.performAction()
 
                     notifyItemChanged(pos)
 
-//                SharedPrefHandler(activity).setBooleanValue(Params.HAS_ITEM_IN_CART, true)
                 }
             } else addBtn.text = activity.getString(R.string.in_cart_text)
 

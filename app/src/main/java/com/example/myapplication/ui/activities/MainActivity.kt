@@ -184,7 +184,7 @@ class MainActivity : AppCompatActivity(), Clicked {
             val cartItems = SharedPrefHandler(activity).getIntFromSharedPref(Params.SP_CART_ITEMS)
 
             cartGrp.visibility =
-                if (cartItems <= 0) View.GONE else {
+                if (cartItems < 0) View.GONE else {
                     itemCount = cartItems
 
                     priceTv.text =

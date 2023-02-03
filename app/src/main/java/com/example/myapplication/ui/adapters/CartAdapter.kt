@@ -35,7 +35,7 @@ class CartAdapter(
             itemIv.setImageResource(item.itemImage)
 
             crossIv.setOnClickListener {
-                removeItem(item, holder.adapterPosition)
+                removeItem(item, holder.layoutPosition)
 //                clicked.performAction(items[holder.adapterPosition].itemId)
             }
         }
