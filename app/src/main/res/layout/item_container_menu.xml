@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_100sdp"
+    tools:context="ui.adapters.MenuAdapter"
     android:layout_marginTop="@dimen/view_top_margin_large">
 
     <TextView

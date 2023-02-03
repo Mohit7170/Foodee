@@ -18,12 +18,16 @@ class MainActivity : AppCompatActivity(), Clicked {
 
     private var itemCount = 0
 
+    private var isFromCart = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (intent.getBooleanExtra("isFromCart", false)) makeMenuLyt()
+        isFromCart = intent.getBooleanExtra("isFromCart", false)
+
+        if (isFromCart) makeMenuLyt()
         else makeCartLyt()
     }
 
@@ -31,11 +35,11 @@ class MainActivity : AppCompatActivity(), Clicked {
         with(binding) {
             cartGrp.visibility = View.GONE
 
-            val items = DemoMenuItems.getItems(activity)
+            val cartItems = AppDatabase.getInstance(activity).cartDao().getAll()
 
-            if (items.isNotEmpty()) {
+            if (cartItems.isNotEmpty()) {
                 bookingsRv.visibility = View.VISIBLE
-                bookingsRv.adapter = MenuAdapter(activity, items, this@MainActivity)
+                bookingsRv.adapter = MenuAdapter(activity, cartItems, this@MainActivity)
             }
         }
     }
@@ -64,13 +68,15 @@ class MainActivity : AppCompatActivity(), Clicked {
         }
     }
 
-    override fun addItem(itemId: Int) {
-        with(binding) {
-            if (itemId > 0) {
-                cartGrp.visibility = View.VISIBLE
-                priceTv.text = " 1111"
+    override fun performAction(itemId: Int) {
+        if(!isFromCart) {
+            with(binding) {
+                if (itemId > 0) {
+                    cartGrp.visibility = View.VISIBLE
+                    priceTv.text = " 1111"
 
-            } else cartGrp.visibility = View.GONE
+                } else cartGrp.visibility = View.GONE
+            }
         }
     }
 

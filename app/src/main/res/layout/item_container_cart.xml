@@ -4,68 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_100sdp"
-    android:layout_marginTop="@dimen/view_top_margin_large">
+    android:layout_marginTop="@dimen/view_top_margin_large"
+    tools:context="ui.adapters.CartAdapter">
 
     <TextView
         android:id="@+id/item_name_tv"
         style="@style/tv.normal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/view_horizontal_margin_large"
         android:layout_marginTop="@dimen/view_top_margin_normal"
-        android:layout_marginEnd="@dimen/view_end_margin_large"
         android:maxLines="2"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/item_iv"
-        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toEndOf="@id/item_iv"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@tools:sample/lorem/random" />
 
     <TextView
         android:id="@+id/item_price_tv"
-        style="@style/tv.mid"
+        style="@style/tv.large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/view_top_margin_normal"
+        android:layout_marginEnd="@dimen/view_end_margin_large"
         android:ellipsize="end"
         android:maxLength="10"
-        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
         app:layout_constraintTop_toBottomOf="@id/item_name_tv"
+        tools:layout_editor_absoluteX="122dp"
         tools:text="₹131" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/item_iv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/view_vertical_margin_xlarge"
+        android:layout_marginVertical="@dimen/view_vertical_margin_xlarge"
         android:scaleType="centerCrop"
-        app:layout_constraintDimensionRatio="1:0.7"
-        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundRectangleImageView"
         tools:src="@tools:sample/avatars" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/add_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:elevation="@dimen/_8sdp"
-        android:text="add"
-        android:textColor="@color/call_green"
-        app:layout_constraintBottom_toBottomOf="@id/item_iv"
-        android:layout_marginHorizontal="@dimen/view_horizontal_margin_normal"
-        app:cornerRadius="@dimen/_4sdp"
-        app:layout_constraintTop_toBottomOf="@id/item_iv"
-        app:layout_constraintEnd_toEndOf="@+id/item_iv"
-        app:layout_constraintStart_toStartOf="@+id/item_iv" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/cross_iv"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:background="@color/call_red"
+        android:src="@drawable/cross"
+        app:contentPadding="@dimen/_4sdp"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        app:tint="@color/white" />
 
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="@dimen/view_height_normal"
         android:background="@color/view_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_start"

@@ -17,6 +17,7 @@
     <dimen name="view_vertical_padding_normal">@dimen/_12sdp</dimen>
 
     <dimen name="view_horizontal_margin_normal">@dimen/_4sdp</dimen>
+    <dimen name="view_horizontal_margin_large">@dimen/_8sdp</dimen>
 
     <dimen name="view_vertical_margin_normal">@dimen/_4sdp</dimen>
     <dimen name="view_vertical_margin_large">@dimen/_8sdp</dimen>

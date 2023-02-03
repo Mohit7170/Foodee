@@ -32,7 +32,7 @@ class MenuAdapter(
             itemPriceTv.text = "₹ ${item.itemPrice}"
 
             addBtn.setOnClickListener {
-                clicked.addItem(items[holder.adapterPosition].itemId)
+                clicked.performAction(items[holder.adapterPosition].itemId)
             }
         }
     }
