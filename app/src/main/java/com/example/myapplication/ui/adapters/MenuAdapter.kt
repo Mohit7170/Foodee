@@ -4,6 +4,7 @@ import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
 import com.example.myapplication.classes.AppDatabase
 import com.example.myapplication.databinding.ItemContainerMenuBinding
 import com.example.myapplication.interfaces.Clicked
@@ -36,7 +37,7 @@ class MenuAdapter(
             itemIv.setImageResource(item.itemImage)
 
             if (!item.isInCart) {
-                addBtn.text = "Add"
+                addBtn.text = activity.getString(R.string.add_text)
                 addBtn.setOnClickListener {
                     val pos = holder.adapterPosition
                     val addItem = items[pos]
@@ -58,7 +59,7 @@ class MenuAdapter(
 
 //                SharedPrefHandler(activity).setBooleanValue(Params.HAS_ITEM_IN_CART, true)
                 }
-            } else addBtn.text = "In Cart"
+            } else addBtn.text = activity.getString(R.string.in_cart_text)
 
         }
     }

@@ -6,4 +6,6 @@
     <string name="view_cart_text">View Cart</string>
     <string name="what_s_new_text">What\'s New</string>
     <string name="my_cart_text">My Cart</string>
+    <string name="add_text">Add</string>
+    <string name="in_cart_text">In Cart</string>
 </resources>

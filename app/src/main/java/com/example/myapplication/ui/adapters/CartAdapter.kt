@@ -25,7 +25,6 @@ class CartAdapter(
         )
         return ViewHolder(binding)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.binding) {
 
