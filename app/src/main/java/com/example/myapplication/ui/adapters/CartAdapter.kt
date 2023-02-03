@@ -47,13 +47,13 @@ class CartAdapter(
         items.removeAt(position)
 
 //        if(items.isEmpty())
-        SharedPrefHandler(activity).setIntValue(Params.CART_ITEMS, items.count())
+        SharedPrefHandler(activity).setIntValue(Params.SP_CART_ITEMS, items.count())
 
         val oldCartVal =
-            SharedPrefHandler(activity).getIntFromSharedPref(Params.CART_VALUE) - item.itemPrice
+            SharedPrefHandler(activity).getIntFromSharedPref(Params.SP_CART_VALUE) - item.itemPrice
 
         SharedPrefHandler(activity).setIntValue(
-            Params.CART_VALUE,
+            Params.SP_CART_VALUE,
             if (oldCartVal <= 0) 0 else oldCartVal.toInt()
         )
 

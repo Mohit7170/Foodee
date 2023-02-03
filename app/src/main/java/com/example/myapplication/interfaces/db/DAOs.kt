@@ -7,7 +7,8 @@ import com.example.myapplication.modals.db.MenuItem
 interface MenuItemDAO {
     @Query("SELECT * FROM MenuItem")
     fun getAll(): List<MenuItem>
- @Query("SELECT * FROM MenuItem WHERE isInCart = true")
+
+    @Query("SELECT * FROM MenuItem WHERE isInCart = true")
     fun getCartItems(): List<MenuItem>
 
     @Insert

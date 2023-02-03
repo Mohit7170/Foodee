@@ -1,7 +1,6 @@
 package com.example.myapplication.ui.activities
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
@@ -19,10 +18,9 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val appLan = SharedPrefHandler(this).getStringFromSharedPref(Params.APP_LANG)
-        val langCode = if (appLan == "-") "en" else appLan
+        val appLan = SharedPrefHandler(this).getAppLanguageKey()
 
-        val locale = Locale("hi")
+        val locale = Locale(appLan)
         Locale.setDefault(locale)
         val config = Configuration()
         config.locale = locale

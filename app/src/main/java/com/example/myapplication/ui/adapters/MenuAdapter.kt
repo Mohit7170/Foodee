@@ -46,12 +46,12 @@ class MenuAdapter(
                     AppDatabase.getInstance(activity).menuDao().updateItem(addItem)
 
                     val items =
-                        SharedPrefHandler(activity).getIntFromSharedPref(Params.CART_ITEMS) + 1
+                        SharedPrefHandler(activity).getIntFromSharedPref(Params.SP_CART_ITEMS) + 1
                     val oldCartVal =
-                        SharedPrefHandler(activity).getIntFromSharedPref(Params.CART_VALUE) + item.itemPrice
+                        SharedPrefHandler(activity).getIntFromSharedPref(Params.SP_CART_VALUE) + item.itemPrice
 
-                    SharedPrefHandler(activity).setIntValue(Params.CART_ITEMS, items)
-                    SharedPrefHandler(activity).setIntValue(Params.CART_VALUE, oldCartVal.toInt())
+                    SharedPrefHandler(activity).setIntValue(Params.SP_CART_ITEMS, items)
+                    SharedPrefHandler(activity).setIntValue(Params.SP_CART_VALUE, oldCartVal.toInt())
 
                     clicked.performAction(addItem.itemId)
 

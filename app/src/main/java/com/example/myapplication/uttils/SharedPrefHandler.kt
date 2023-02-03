@@ -3,6 +3,7 @@ package com.example.myapplication.uttils
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.myapplication.uttils.Params.Companion.SHARED_PREF_NAME
+import com.example.myapplication.uttils.Params.Companion.SP_KEY_USER_LANGUAGE
 
 class SharedPrefHandler(context: Context) {
 
@@ -38,6 +39,5 @@ class SharedPrefHandler(context: Context) {
     fun getAppLanguageKey(): String {
         return sharedPreferences.getString(SP_KEY_USER_LANGUAGE, Params.Languages.ENGLISH.key)!!
     }
-
 
 }
