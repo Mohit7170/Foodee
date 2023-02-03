@@ -6,14 +6,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.classes.AppDatabase
 import com.example.myapplication.databinding.ItemContainerCartBinding
-import com.example.myapplication.databinding.ItemContainerMenuBinding
 import com.example.myapplication.interfaces.Clicked
 import com.example.myapplication.modals.db.MenuItem
+import com.example.myapplication.uttils.Params
+import com.example.myapplication.uttils.SharedPrefHandler
 
 class CartAdapter(
     private val activity: Activity,
     private val items: MutableList<MenuItem>,
-    private val clicked:Clicked
+    private val clicked: Clicked
 ) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,23 +27,39 @@ class CartAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(holder.binding){
+        with(holder.binding) {
 
             val item = items[position]
 
             itemNameTv.text = item.itemName
             itemPriceTv.text = "₹ ${item.itemPrice}"
+            itemIv.setImageResource(item.itemImage)
 
             crossIv.setOnClickListener {
-                removeItem(item,position)
+                removeItem(item, holder.adapterPosition)
 //                clicked.performAction(items[holder.adapterPosition].itemId)
             }
         }
     }
 
-    private fun removeItem(item: MenuItem, position: Int){
-        AppDatabase.getInstance(activity).cartDao().deleteItem(item)
+    private fun removeItem(item: MenuItem, position: Int) {
+        item.isInCart = false
+        AppDatabase.getInstance(activity).menuDao().updateItem(item)
         items.removeAt(position)
+
+//        if(items.isEmpty())
+        SharedPrefHandler(activity).setIntValue(Params.CART_ITEMS, items.count())
+
+        val oldCartVal =
+            SharedPrefHandler(activity).getIntFromSharedPref(Params.CART_VALUE) - item.itemPrice
+
+        SharedPrefHandler(activity).setIntValue(
+            Params.CART_VALUE,
+            if (oldCartVal <= 0) 0 else oldCartVal.toInt()
+        )
+
+//        SharedPrefHandler(activity).setBooleanValue(Params.HAS_ITEM_IN_CART,false)
+
         notifyItemRemoved(position)
     }
 
