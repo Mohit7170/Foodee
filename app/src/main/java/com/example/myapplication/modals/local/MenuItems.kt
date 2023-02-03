@@ -14,11 +14,13 @@ class DemoMenuItems {
     companion object {
         fun getItems(context: Context): List<MenuItem> {
             val items = AppDatabase.getInstance(context).menuDao().getAll()
-
             if (items.isEmpty()) addIteToDb(context)
             return items
         }
 
+        fun initData(context: Context){
+            if (AppDatabase.getInstance(context).menuDao().getAll().isEmpty()) addIteToDb(context)
+        }
         fun addIteToDb(context: Context) {
             AppDatabase.getInstance(context).menuDao().insertAll(
                 MenuItem(

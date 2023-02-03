@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        DemoMenuItems.addIteToDb(this)
+        DemoMenuItems.initData(this)
 
         Handler(Looper.getMainLooper()).postDelayed(2000) {
             startActivity(Intent(this, MainActivity::class.java))
