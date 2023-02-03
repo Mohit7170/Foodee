@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.MainActivity">
+
+    <TextView
+        android:id="@+id/top_tv"
+        style="@style/tv.heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/activity_start_margin"
+        android:text="What's New"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bookings_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_start_margin"
+        android:layout_marginTop="@dimen/view_top_margin_normal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/top_tv"
+        tools:itemCount="3"
+        tools:layout_editor_absoluteX="0dp"
+        tools:listitem="@layout/item_container_menu" />
+
+
+    <View
+        android:id="@+id/bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/cart_iv"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginVertical="@dimen/view_vertical_margin_large"
+        android:layout_marginStart="@dimen/activity_start_margin"
+        android:src="@drawable/baseline_shopping_bag_24"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_view"
+        app:layout_constraintStart_toStartOf="@id/bottom_view"
+        app:layout_constraintTop_toTopOf="@id/bottom_view"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/price_tv"
+        style="@style/tv.mid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/view_start_margin_normal"
+        android:maxLength="15"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_view"
+        app:layout_constraintStart_toEndOf="@id/cart_iv"
+        app:layout_constraintTop_toTopOf="@id/bottom_view"
+        tools:text="₹131" />
+
+    <TextView
+        android:id="@+id/view_cart_tv"
+        style="@style/tv.mid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/view_start_margin_normal"
+        android:layout_marginEnd="@dimen/activity_end_margin"
+        android:gravity="end"
+        android:maxLength="15"
+        android:text="@string/view_cart_text"
+        android:textColor="@color/white"
+        app:drawableEndCompat="@drawable/baseline_arrow_right_alt_24"
+        app:drawableTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_view"
+        app:layout_constraintEnd_toEndOf="@id/bottom_view"
+        app:layout_constraintTop_toTopOf="@id/bottom_view" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/cart_grp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="view_cart_tv,price_tv,cart_iv,bottom_view"
+        tools:visibility="visible" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
