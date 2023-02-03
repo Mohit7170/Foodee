@@ -59,19 +59,11 @@ dependencies {
 
     def room_version = "2.5.0"
     //Room Db
-//    implementation "androidx.room:room-runtime:$room_version"
-//    annotationProcessor "androidx.room:room-compiler:$room_version"
-//
-//    kapt "android.arch.persistence.room:compiler:1.1.1"
-
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
-    // ViewModel and Live Data
-//    implementation "android.arch.lifecycle:extensions:1.1.1"
-//    implementation "androidx.lifecycle:lifecycle-common-java8:2.5.1"
-//    kapt "androidx.room:room-compiler:$room_version"
+    //Splash Screen
+    implementation 'androidx.core:core-splashscreen:1.0.0-alpha01'
 
-//    kapt "android.arch.persistence.room:compiler:$room_version"
 
 }

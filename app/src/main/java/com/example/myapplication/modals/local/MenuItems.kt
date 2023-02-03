@@ -1,9 +1,6 @@
 package com.example.myapplication.modals
 
 import android.content.Context
-import android.os.Handler
-import android.os.Looper
-import androidx.core.os.postDelayed
 import com.example.myapplication.R
 import com.example.myapplication.classes.AppDatabase
 import com.example.myapplication.modals.db.MenuItem

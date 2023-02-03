@@ -2,11 +2,15 @@ package com.example.myapplication.ui.activities
 
 import android.app.Activity
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
+import androidx.core.splashscreen.SplashScreen;
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.postDelayed
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.myapplication.R
 import com.example.myapplication.classes.AppDatabase
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -17,6 +21,7 @@ import com.example.myapplication.ui.adapters.MenuAdapter
 import com.example.myapplication.uttils.Params
 import com.example.myapplication.uttils.SharedPrefHandler
 
+
 class MainActivity : AppCompatActivity(), Clicked {
 
     private lateinit var activity: Activity
@@ -25,8 +30,15 @@ class MainActivity : AppCompatActivity(), Clicked {
     private var itemCount = 0
 
     private var isFromCart = false
+    private var isLoading = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+//        val splashScreen = installSplashScreen()
+//        splashScreen.setKeepVisibleCondition { isLoading }
+        //        DemoMenuItems.initData(this)
+//        Handler(Looper.getMainLooper()).postDelayed(2000) { isLoading = false }
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -103,7 +115,7 @@ class MainActivity : AppCompatActivity(), Clicked {
 //
 //    }
 
-    private fun checkCart(){
+    private fun checkCart() {
         with(binding) {
             val cartItems = SharedPrefHandler(activity).getIntFromSharedPref(Params.CART_ITEMS)
 
@@ -111,7 +123,8 @@ class MainActivity : AppCompatActivity(), Clicked {
                 if (cartItems <= 0) View.GONE else {
                     itemCount = cartItems
 
-                    priceTv.text = "₹${SharedPrefHandler(activity).getIntFromSharedPref(Params.CART_VALUE)}"
+                    priceTv.text =
+                        "₹${SharedPrefHandler(activity).getIntFromSharedPref(Params.CART_VALUE)}"
 
                     View.VISIBLE
                 }
